@@ -1,59 +1,59 @@
 # YAYO Frontend
 
-独立 Vue 前端项目，可同时连接 YAYO Python 版本和 YAYO Java 版本。
+Standalone Vue frontend project that can connect to both the YAYO Python and YAYO Java versions.
 
-项目目录：
+Project directory:
 
 ```text
 /Users/xiao_xiong/Desktop/code/YAYOFrontend
 ```
 
-## 功能
+## Features
 
-- 在页面中切换 Java / Python 后端。
-- 统一适配 `/chat` 响应字段：
-  - Python：`conv_id`、`agent_type`、`latency_ms`
-  - Java：`conversation_id`、`agent_type`、`latency_ms`
-- 支持聊天调试、健康检查、监控摘要、知识库检索、知识库文档导入、文件上传。
-- 支持 Docker + Nginx 部署。
+- Switch between Java and Python backends in the UI.
+- Normalize `/chat` response fields:
+  - Python: `conv_id`, `agent_type`, `latency_ms`
+  - Java: `conversation_id`, `agent_type`, `latency_ms`
+- Supports chat debugging, health checks, monitoring summaries, knowledge base search, knowledge document import, and file uploads.
+- Supports Docker + Nginx deployment.
 
-## 默认后端地址
+## Default Backend URLs
 
-| 后端 | 默认地址 |
+| Backend | Default URL |
 |------|----------|
 | Python | `http://localhost:8000` |
 | Java | `http://localhost:8080` |
 
-开发模式下，Vite 会代理：
+In development mode, Vite proxies:
 
-| 前端路径 | 代理到 |
+| Frontend Path | Proxies To |
 |----------|--------|
 | `/api/python` | `http://localhost:8000` |
 | `/api/java` | `http://localhost:8080` |
 
-Docker 模式下，Nginx 会通过 `host.docker.internal` 访问宿主机上的 Python / Java 服务。
+In Docker mode, Nginx accesses the Python and Java services on the host machine through `host.docker.internal`.
 
-## 本地运行
+## Local Development
 
-安装依赖：
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-启动：
+Start the dev server:
 
 ```bash
 npm run dev
 ```
 
-访问：
+Open:
 
 ```text
 http://localhost:5173
 ```
 
-如果后端端口不是默认值，可以启动时覆盖：
+If the backend ports are not using the defaults, override them when starting:
 
 ```bash
 VITE_PYTHON_API_URL=http://localhost:8000 \
@@ -61,44 +61,44 @@ VITE_JAVA_API_URL=http://localhost:8080 \
 npm run dev
 ```
 
-## Docker 部署
+## Docker Deployment
 
-先构建前端静态文件：
+Build the frontend static files:
 
 ```bash
 npm run build
 ```
 
-再构建并启动容器：
+Build and start the container:
 
 ```bash
 docker compose up -d --build
 ```
 
-访问：
+Open:
 
 ```text
 http://localhost:5174
 ```
 
-停止：
+Stop:
 
 ```bash
 docker compose down
 ```
 
-## 后端启动参考
+## Backend Startup Reference
 
-Python 版默认：
+Python default:
 
 ```text
 http://localhost:8000
 ```
 
-Java 版默认：
+Java default:
 
 ```text
 http://localhost:8080
 ```
 
-两个后端不需要同时启动。前端页面里选择当前要调试的后端即可。
+The two backends do not need to run at the same time. Select the backend you want to debug from the frontend page.
