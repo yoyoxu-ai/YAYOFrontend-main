@@ -5,7 +5,7 @@ Standalone Vue frontend project that can connect to both the YAYO Python and YAY
 Project directory:
 
 ```text
-/Users/xiao_xiong/Desktop/code/YAYOFrontend
+/Users/xuyou/Desktop/Master/YAYOFrontend-main
 ```
 
 ## Features
